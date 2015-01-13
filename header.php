@@ -1,65 +1,63 @@
-<?php
-/**
- * The Header for our theme
- *
- * Displays all of the <head> section and everything up till <div id="main">
- *
- * @package WordPress
- * @subpackage Twenty_Fourteen
- * @since Twenty Fourteen 1.0
- */
-?><!DOCTYPE html>
-<!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if !(IE 7) | !(IE 8) ]><!-->
-<html <?php language_attributes(); ?>>
-<!--<![endif]-->
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
-	<![endif]-->
-	<?php wp_head(); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes() ?>>
+<head profile="http://gmpg.org/xfn/11">
+<title>
+<?php wp_title(); ?>
+</title>
+<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen,projection" />
+<?php wp_head(); ?>
 </head>
+<body>
+<div class="container-fluid maxpg">
 
-<body <?php body_class(); ?>>
-<div id="page" class="hfeed site">
-	<?php if ( get_header_image() ) : ?>
-	<div id="site-header">
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="">
-		</a>
-	</div>
-	<?php endif; ?>
+<div class="row">
+    <div id="top" class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <div class="logo col-xs-12 col-sm-6">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/img-fpo.png" class="" width="100%">
+            <a href="<?php echo get_option('home'); ?>" title="<?php bloginfo('name'); ?>"></a>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div id="social" class="col-xs-12 col-sm-12 hidden-xs">
+                <div class="google pull-right"><a href="#" title="google +" target="_blank"></a></div>
+                <div class="facebook pull-right"><a href="#" title="Facebook" target="_blank"></a></div>
+                <div class="in pull-right"><a href="#" title="Linked In" target="_blank"></a></div>
+                <div class="twitter pull-right"><a href="#" title="Twitter" target="_blank"></a></div>
+            </div>
+            <div class="phone col-xs-12 hidden-xs"><i class="fa fa-phone"></i> 123-456-7890</div>
+            <h2 class="phone-m col-xs-12 visible-xs-block text-center"><i class="fa fa-phone"></i> 123-456-7890</h2>
+        </div>
+    </div>
+</div>         
+    
+<div class="row">
+    <div id="navbar" class="col-sm-10 col-sm-offset-1">
+        
+                        
+                       
+						<?php wp_nav_menu( array(
+                'menu'              => 'navigation',
+                'theme_location'    => 'tt-main',
+                'depth'             => 2,
+                'container'         => 'div',
+                'container_class'   => 'collapse navbar-collapse',
+        'container_id'      => 'bs-example-navbar-collapse-1',
+                'menu_class'        => 'nav navbar-nav',
+                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                'walker'            => new wp_bootstrap_navwalker())
+            ); ?>
+            
+                        
+    </div>
+</div>
+    
+<!--    nav-->
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="header-main">
-			<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-
-			<div class="search-toggle">
-				<a href="#search-container" class="screen-reader-text"><?php _e( 'Search', 'twentyfourteen' ); ?></a>
-			</div>
-
-			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
-				<button class="menu-toggle"><?php _e( 'Primary Menu', 'twentyfourteen' ); ?></button>
-				<a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'twentyfourteen' ); ?></a>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
-			</nav>
-		</div>
-
-		<div id="search-container" class="search-box-wrapper hide">
-			<div class="search-box">
-				<?php get_search_form(); ?>
-			</div>
-		</div>
-	</header><!-- #masthead -->
-
-	<div id="main" class="site-main">
+<div class="row">
+					
+					</div>
+    
+    
+    
+    
+<!--header-->

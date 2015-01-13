@@ -1,28 +1,29 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains footer content and the closing of the #main and #page div elements.
- *
- * @package WordPress
- * @subpackage Twenty_Fourteen
- * @since Twenty Fourteen 1.0
- */
-?>
+<div class="row">
+    <div id="footer-wrap" class="col-sm-10 col-sm-offset-1">
+        <div id="footer-col" class="col-sm-3">
+            Footer one
+        </div>
+        <div id="footer-col" class="col-sm-3">
+            Footer two
+        </div>
+        <div id="footer-col" class="col-sm-3">
+            Footer three
+        </div>
+        <div id="footer-col" class="col-sm-3">
+            Footer four
+        </div>
+        
+    </div>    
+</div>
+          
+      
+  <div id="copyright" class="col-sm-10 col-sm-offset-1">
+    <p><?php _e('&copy;','flexx'); echo ' '.date('Y').' '; _e(''.bloginfo('name'). ' - All rights reserved.','flexx'); ?> | <a href="#" title="title">link</a> | </p>
+  </div>
+  
+</div><!--row-->
 
-		</div><!-- #main -->
+<?php wp_footer(); ?>
 
-		<footer id="colophon" class="site-footer" role="contentinfo">
-
-			<?php get_sidebar( 'footer' ); ?>
-
-			<div class="site-info">
-				<?php do_action( 'twentyfourteen_credits' ); ?>
-				<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'twentyfourteen' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'twentyfourteen' ), 'WordPress' ); ?></a>
-			</div><!-- .site-info -->
-		</footer><!-- #colophon -->
-	</div><!-- #page -->
-
-	<?php wp_footer(); ?>
 </body>
 </html>
