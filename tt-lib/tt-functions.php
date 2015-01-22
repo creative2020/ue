@@ -17,10 +17,13 @@ require_once ('plugins/wp_bootstrap_navwalker.php'); // used for bootstrap nav m
 require_once ('tt-shortcodes.php');
 
 // CPT's
-// require_once ('tt-cpt.php');
+require_once ('tt-cpt.php');
 
 // Custom fields
 // require_once ('tt-acf-fields.php');
+
+// Add theme support for featured images
+add_theme_support( 'post-thumbnails' );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Add boostrap from CDN
 

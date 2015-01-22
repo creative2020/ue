@@ -9,34 +9,40 @@
 <?php wp_head(); ?>
 </head>
 <body>
-<div class="container-fluid maxpg">
+<div class="container-fluid">
 
 <div class="row">
+    <div id="skynav" class="col-xs-12 pull-right">
+        <div class="col-xs-12 hidden-xs pull-right">
+            <p class="text-right">
+                <a href="#">
+                    <i class="fa fa-user"></i> login
+                </a>
+            </p>
+        </div>
+    </div>
     <div id="top" class="col-xs-12 col-sm-10 col-sm-offset-1">
-        <div class="logo col-xs-12 col-sm-6">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/img-fpo.png" class="" width="100%">
+        <div class="logo col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-0">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ue-mark.svg" class="img-responsize">
             <a href="<?php echo get_option('home'); ?>" title="<?php bloginfo('name'); ?>"></a>
         </div>
-        <div class="col-xs-12 col-sm-6">
-            <div id="social" class="col-xs-12 col-sm-12 hidden-xs">
-                <div class="google pull-right"><a href="#" title="google +" target="_blank"></a></div>
-                <div class="facebook pull-right"><a href="#" title="Facebook" target="_blank"></a></div>
-                <div class="in pull-right"><a href="#" title="Linked In" target="_blank"></a></div>
-                <div class="twitter pull-right"><a href="#" title="Twitter" target="_blank"></a></div>
+        <div class="col-xs-12 col-sm-10">
+            <div class="tagline">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/tagline.svg" class="img-responsize">
             </div>
-            <div class="phone col-xs-12 hidden-xs"><i class="fa fa-phone"></i> 123-456-7890</div>
+            
             <h2 class="phone-m col-xs-12 visible-xs-block text-center"><i class="fa fa-phone"></i> 123-456-7890</h2>
         </div>
     </div>
 </div>         
     
 <div class="row">
-    <div id="navbar" class="col-sm-10 col-sm-offset-1">
+    <div id="navbar" class="col-sm-12">
         
                         
                        
 						<?php wp_nav_menu( array(
-                'menu'              => 'navigation',
+                'menu'              => 'main',
                 'theme_location'    => 'tt-main',
                 'depth'             => 2,
                 'container'         => 'div',
@@ -53,9 +59,7 @@
     
 <!--    nav-->
 
-<div class="row">
-					
-					</div>
+
     
     
     

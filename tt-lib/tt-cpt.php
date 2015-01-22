@@ -6,125 +6,48 @@ Requirements: php5.5.*
 */
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// 2020 CPT's
 
-namespace TwentyTwenty\TTcpt;
+add_action( 'init', 'tt_cpt' );
 
-////////////////////////////////////////////////////////
-
-
-class RandomClass {
+function tt_cpt() {
     
-    public function create_content_type($options) {
-        return "You just created a content type, with Traits called " . $options["type"];
-    }
-
-    
-    public function __construct($options) {
-        $this->content_type_message = $this->create_content_type($options);
-    }
+    $cpt_singlular_name = 'Project';
+    $cpt_plural_name = 'Projects';
     
     
-    public function print_message() {
-        echo $this->content_type_message;
-    }
-}
-
-$object = new RandomClass(array( "type" => "location" ));
-
-//add_action('init', [ $object, "print_message" ]);
-
-////////////////////////////////////////////////////////
-
-class ContentType {
-    public $type;
-    public $options = array();
-    public $labels = array();
-    
-    public function __construct($type, $options = array(), $labels = array()) {
-        $this->type = $type;
-        
-        $default_options = array(
-            'public' => true,
-            'supports' => array('title', 'editor', 'revisions', 'custom-fields', 'thumbnail', 'author'),
-        );
-        $required_labels = array(
-            'singular_name' => ucwords($this->type),
-            'plural_name' => ucwords($this->type)
-        );
-        
-        $this->options = $options + $default_options;
-        $this->labels = $labels + $required_labels;
-        
-        $this->options['labels'] = $this->labels + $this->default_labels();
-        
-        add_action('init', array( $this, "register"));
-    }
-    public function register() {
-        register_post_type($this->type, $this->options);
-    }
-    public function default_labels() {
-        return array(
-            'name' => $this->labels['plural_name'],
-            'singular_name' => $this->labels['singular_name'],
-            'add_new' => 'Add New ' . $this->labels['singular_name'],
-            'add_new_item' => 'Add New ' . $this->labels['singular_name'],
-            'edit' => 'Edit',
-            'edit_item' => 'Edit ' . $this->labels['singular_name'],
-            'view_item' => 'View ' . $this->labels['singular_name'],
-            'search_items' => 'Search ' . $this->labels['plural_name'],
-            'not_found' => 'No Matching ' . $this->labels['plural_name'],
-            'not_found_in_trash' => 'No ' . strtolower($this->labels['plural_name']) . ' found',
-            'parent_item_colon' => 'Parent ' . $this->labels['singular_name']
-        );
-    }
-}
-$tt_cpt = new ContentType('tt_cpt', array(), array('plural_name' => 'tt_cpt'));
-
-    
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// Taxonomies
-
-/*
-// Register Custom Taxonomy
-function taxhelp() {
-
 	$labels = array(
-		'name'                       => 'Help and FAQ\'s',
-		'singular_name'              => 'Help and FAQ',
-		'menu_name'                  => 'Help and FAQ',
-		'all_items'                  => 'All Items',
-		'parent_item'                => 'Parent Item',
-		'parent_item_colon'          => 'Parent Item:',
-		'new_item_name'              => 'New Item Name',
-		'add_new_item'               => 'Add New Item',
-		'edit_item'                  => 'Edit Item',
-		'update_item'                => 'Update Item',
-		'separate_items_with_commas' => 'Separate items with commas',
-		'search_items'               => 'Search Items',
-		'add_or_remove_items'        => 'Add or remove items',
-		'choose_from_most_used'      => 'Choose from the most used items',
-		'not_found'                  => 'Not Found',
+		'name'               => _x( $cpt_plural_name, 'post type general name', 'your-plugin-textdomain' ),
+		'singular_name'      => _x( $cpt_singlular_name, 'post type singular name', 'your-plugin-textdomain' ),
+		'menu_name'          => _x( $cpt_plural_name, 'admin menu', 'your-plugin-textdomain' ),
+		'name_admin_bar'     => _x( $cpt_singlular_name, 'add new on admin bar', 'your-plugin-textdomain' ),
+		'add_new'            => _x( 'Add New', $cpt_singlular_name, 'your-plugin-textdomain' ),
+		'add_new_item'       => __( 'Add New '.$cpt_singlular_nameBook, 'your-plugin-textdomain' ),
+		'new_item'           => __( 'New '.$cpt_singlular_name, 'your-plugin-textdomain' ),
+		'edit_item'          => __( 'Edit '.$cpt_singlular_name, 'your-plugin-textdomain' ),
+		'view_item'          => __( 'View '.$cpt_singlular_name, 'your-plugin-textdomain' ),
+		'all_items'          => __( 'All '.$cpt_plural_name, 'your-plugin-textdomain' ),
+		'search_items'       => __( 'Search '.$cpt_plural_name, 'your-plugin-textdomain' ),
+		'parent_item_colon'  => __( 'Parent '.$cpt_plural_name.':', 'your-plugin-textdomain' ),
+		'not_found'          => __( 'No '.$cpt_plural_name.' found.', 'your-plugin-textdomain' ),
+		'not_found_in_trash' => __( 'No '.$cpt_plural_name.' found in Trash.', 'your-plugin-textdomain' )
 	);
-	$rewrite = array(
-		'slug'                       => 'help',
-		'with_front'                 => true,
-		'hierarchical'               => false,
-	);
+
 	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => true,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-		'rewrite'                    => $rewrite,
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'project' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'custom-fields' )
 	);
-	register_taxonomy( 'taxhelp', array( 'faq' ), $args );
 
+	register_post_type( 'project', $args );
 }
-
-// Hook into the 'init' action
-add_action( 'init', 'help', 0 );    
-*/
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Roles
