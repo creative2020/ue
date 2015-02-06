@@ -22,11 +22,11 @@
         </div>
     </div>
     <div id="top" class="col-xs-12 col-sm-10 col-sm-offset-1">
-        <div class="logo col-xs-6 col-xs-offset-3 col-sm-2 col-sm-offset-0">
+        <div class="logo col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-0">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ue-mark.svg" class="img-responsize">
             <a href="<?php echo get_option('home'); ?>" title="<?php bloginfo('name'); ?>"></a>
         </div>
-        <div class="col-xs-12 col-sm-10">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-10">
             <div class="tagline">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/tagline.svg" class="img-responsize">
             </div>
