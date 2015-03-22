@@ -47,12 +47,19 @@ body {
 p {
     margin:1.0em 0;
 }
+#login a:visited,
+#login a:active,
+#login a:focus{
+    color:#411f1e;
+}
 a {
     color:#411f1e;
 }
 a:hover {
     color:#a32a2e;
 }
+
+
 ul, li {
     list-style: none;
     list-style-type: none;
@@ -77,12 +84,6 @@ ul {
     margin:1.0em 0;
 }
 /*Buttons*/
-[class^="btn-"],
-[class*="btn-"]{
-    color: #fff;
-    background-color: #412020;
-    border:0px !important;
-}
 [class^="btn-"]:visited,
 [class*="btn-"]:visited{
     background-color: #412020;    
@@ -93,9 +94,20 @@ ul {
     background-color: #B4A87D;    
     opacity: 1.0;
 }
+[class^="btn-"]:focus,
+[class*="btn-"]:focus{
+    background-color: #B4A87D;    
+    opacity: 1.0;
+}
 [class^="btn-"]:hover,
 [class*="btn-"]:hover{
     background-color: #A22A2E;    
+}
+[class^="btn-"],
+[class*="btn-"]{
+    color: #fff;
+    background-color: #412020;
+    border:0px !important;
 }
 .btn-primary {
   background-color: #412020;
@@ -105,7 +117,9 @@ ul {
 #page {
     background-color:white;
 }
-
+.page-inside {
+    min-height:800px;
+}
 /*Skynav*/
 #skynav {
     position: absolute;
@@ -114,6 +128,12 @@ ul {
     top:0;
     float: right;
     z-index: 88;
+}
+i.skynav {
+    margin-right:0.5em;
+}
+i.skynav:hover {
+    text-decoration: none;
 }
 
 /*Top*/
@@ -420,7 +440,19 @@ h3.callout-message {
     opacity: 0.8;
     
 }
-
+/*Estimates*/
+.row.estimate-header {
+    font-size:1.2em;
+    color:#411f1e;
+}
+.row.estimate:hover,
+.row.hover:hover{
+    background: #efeded;
+}
+.estimate-name {
+    font-size:1.2em;
+    color:#802528;
+}
 /*Content Main*/
 #main {
 }

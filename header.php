@@ -15,9 +15,18 @@
     <div id="skynav" class="col-xs-12 pull-right">
         <div class="col-xs-12 hidden-xs pull-right">
             <p class="text-right">
-                <a href="#">
-                    <i class="fa fa-user"></i> login
+                
+                <a class="btn btn-primary" data-toggle="collapse" href="#login" aria-expanded="false" aria-controls="collapseExample">
+                    <i class="fa fa-user skynav"></i>login
                 </a>
+
+<div class="collapse" id="login">
+  <div class="well col-sm-3 pull-right">
+      <a href="#login" data-toggle="collapse" href="#login" aria-controls="collapseExample"><i class="fa fa-times-circle skynav pull-right"></i></a>
+      <a href="#"><i class="fa fa-sitemap skynav"></i>Employee intranet</a></br>
+      <a href="/user-login/"><i class="fa fa-user skynav"></i>Subcontractor portal</a>
+  </div>
+</div>
             </p>
         </div>
     </div>
@@ -38,10 +47,8 @@
     
 <div class="row">
     <div id="navbar" class="col-sm-12">
-        
-                        
                        
-						<?php wp_nav_menu( array(
+            <?php wp_nav_menu( array(
                 'menu'              => 'main',
                 'theme_location'    => 'tt-main',
                 'depth'             => 2,

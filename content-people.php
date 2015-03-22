@@ -26,16 +26,17 @@
             <img src="<?php echo $post_thumbnail_url_tn[0]; ?>" class="img-responsive grayscale">
             
         </div>
-        <div id="<?php echo the_title() ?>" class="col-sm-10">
+        <div id="<?php echo the_title() ?>" class="col-sm-9">
         <div>
             <span class="people-name" style="font-size:2.0em;color:#412020;"><?php echo the_title(); ?> </span>
             <span class="people-title"style="font-size:1.0em;color:grey;"><?php echo $people_title[0]; ?></span>
         </div>
             <?php echo the_content(); ?>
+            <?php echo do_shortcode('[tt_rule top="y"]'); ?>
         </div>
         
     </div>
-    <?php echo do_shortcode('[tt_rule top="y"]'); ?>
+    
     
 </div><!--row-->
 

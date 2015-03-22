@@ -278,7 +278,127 @@ function tt_map ( $atts ) {
     
     return $output;
 }
+//////////////////////////////////////////////////////// TT Forms table
 
+add_shortcode( 'tt_form', 'tt_form' ); 
+function tt_form ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'Form name',
+            'link' => '#',
+            'target' => '',
+            'row' => '',
+            'desc' => 'description',
+            'file' => 'file-o',
+            
+		), $atts )
+	);
+    // classes
+    if ( $row == 'header' ) {
+        $style = 'margin-top:0;border-top:1px solid #cccccc;padding:0.5em 0;background:#cccccc;';
+        $col2 = $desc;
+        } 
+    else if ( $row == 'last' ) {
+        $style = 'margin-top:0;border-top:1px solid #cccccc;padding:0.5em 0;border-bottom:1px solid #cccccc;margin-top:-1.3em;';
+        $col2 = '<a class="btn btn-primary" href="'.$link.'"><i class="fa fa-download"></i> Download</a>';
+        }
+    else if ( $row == 'first' ) {
+        $style = 'margin-top:0;border-top:0px solid #cccccc;padding:0.5em 0;border-bottom:0px solid #cccccc;margin-top:-1.3em;';
+        $col2 = '<a class="btn btn-primary" href="'.$link.'"><i class="fa fa-download"></i> Download</a>';
+        }
+    else {
+        $style = 'margin-top:0;border-top:1px solid #cccccc;padding:0.5em 0;margin-top:-1.3em;';
+        $col2 = '<a class="btn btn-primary" href="'.$link.'"><i class="fa fa-download"></i> Download</a>';
+    }
+    
+    
+        
+    //get section html
+    ob_start(); ?>
+        <div class="row hover" style="<?php echo $style ?>">
+            <div class="col-sm-8" style="font-size:1.1em;margin-top:0.5em;">
+                 <i class="fa fa-<?php echo $file ?>" style="color:#802528;width:2.0em;"></i><?php echo $name ?>
+            </div>
+            <div class="col-sm-4 pull-right">
+                 <?php echo $col2 ?>
+            </div>
+        </div>
+        <?php
+        $output .= ob_get_contents();
+    ob_end_clean();
+    return $output;
+}
+//////////////////////////////////////////////////////// TT Estimate list
+
+add_shortcode( 'tt_estimates', 'tt_estimates' ); 
+// echo do_shortcode('[tt_people name="all"]');
+function tt_estimates ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'all',
+            'cat' => '-1',
+            'cat_name' => '',
+            'limit' => '-1',
+            'type' => 'estimate',
+            
+		), $atts )
+	);
+    
+    $args = array(
+	'post_type' => $type,
+	'post_status' => 'publish',
+	'order' => 'ASC',
+	'posts_per_page' => $limit,
+    'cat' => $cat,
+    //'category_name' => $cat_name,
+);
+//pre-loop    
+$output = '';
+$output .= '<div class="row estimate-main-wrapper">'; //main-wrap    
+//get section html
+    ob_start(); ?>
+        <div class="row estimate-header hidden-xs" style="padding:1.0em 0;background:#cccccc;">
+            <div class="col-sm-2">Date</div>
+            <div class="col-sm-4">Project</div>
+            <div class="col-sm-2">Location</div>
+            <div class="col-sm-2">Budget</div>
+            <div class="col-sm-2">Contact</div>
+        </div>
+    <?php
+        $output .= ob_get_contents();
+    ob_end_clean();
+    
+$estimate_query = new WP_Query($args);
+    
+//loop
+    if ($estimate_query->have_posts()) :
+
+
+    while ($estimate_query->have_posts()) : $estimate_query->the_post();
+    
+    
+    
+    //get section html
+    ob_start();
+        include(get_template_directory().'/content-estimate.php');
+        $output .= ob_get_contents();
+    ob_end_clean();
+    
+
+endwhile;
+    //post-loop
+$output .= '</div>'; //main-wrap
+endif;
+wp_reset_postdata(); 
+
+return $output;
+}
+
+////////////////////////////////////////////////////////
   
   
   
