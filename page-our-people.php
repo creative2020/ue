@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Full width
+Template Name: Our People
 */
 ?>
 <?php get_header(); ?>
@@ -19,14 +19,21 @@ Template Name: Full width
     </div>
       
 <div class="row">  
-<div id="page-content" class="col-sm-12">
+<div id="page-content" class="col-sm-8">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
       <?php the_content('<p class="serif">Read the rest of this page &raquo;</p>'); ?>
       <?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
     <?php endwhile; endif; ?>
+ 
+    <div class="row">
+        <?php echo do_shortcode('[tt_people name="all"]'); ?>
+    </div>
+    
   </div>
       
-  
+  <div id="sidebar" class="col-sm-4">
+      <?php dynamic_sidebar( 'tt-sidebar' ); ?>
+  </div>
   </div>
   </div>
 </div>

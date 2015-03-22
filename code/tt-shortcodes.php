@@ -61,42 +61,9 @@ function tt_rule($atts, $content = null) {
         'size'   => '1px',
         'color'  => '#ccc',
         'classes'  => 'col-sm-12 rule',
-        'id' => '',
-        'top' => 'n',
     ), $atts ) );
 
-    if ($top == 'n') {
-    
-    return '<div id="' . $id . '" class="' . $classes . '" style="border-top:' . $size . ' solid ' . $color .';padding:1.0em 0;"></div>';
-    
-    } else {
-        
-        // nothing
-    }
-     
-    if ($top == 'y') {
-    
-    return '<div id="' . $id . '" class="' . $classes . '" style="border-top:' . $size . ' solid ' . $color .';padding:1.0em 0;"> <a href="#top" class="top"><i class="fa fa-arrow-circle-up pull-right"></i></a></div>';
-        
-    } else {
-        
-        // nothing
-    }
-}
-
-////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////// TT spacer
-
-add_shortcode( 'tt_spacer', 'tt_spacer' ); //line
-function tt_spacer($atts, $content = null) {
-    extract(shortcode_atts(array(
-        'size'   => '1.0em',
-        'classes'  => 'col-sm-12',
-    ), $atts ) );
-
-    return '<div class="' . $classes . '" style="height:'.$size.';"></div>';
-        
+    return '<div class="' . $classes . '" style="border-top:' . $size . ' solid ' . $color .';padding:1.0em 0;"></div>';
 }
 
 ////////////////////////////////////////////////////////
@@ -189,97 +156,34 @@ return $output;
 
 ////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////// TT People
+//////////////////////////////////////////////////////// html variable conundrum
 
-add_shortcode( 'tt_people', 'tt_people' ); 
-// echo do_shortcode('[tt_people name="all"]');
-function tt_people ( $atts ) {
+add_shortcode( 'tt_hvc', 'tt_hvc' );
+function tt_hvc ( $atts ) {
 
 	// Attributes
 	extract( shortcode_atts(
 		array(
-			'name' => 'all',
-            'cat' => '-1',
-            'cat_name' => '',
-            'limit' => '-1',
-            'type' => 'people',
+			'name' => 'normal',
+            'id' => '',
 		), $atts )
 	);
-    
-    $args = array(
-	'post_type' => $type,
-	'post_status' => 'publish',
-	'order' => 'ASC',
-	'posts_per_page' => $limit,
-    'cat' => $cat,
-    //'category_name' => $cat_name,
-);
-//pre-loop    
-$output = '';
-$output .= '<div class="row people-main-wrapper">'; //main-wrap    
-    
-$people_query = new WP_Query($args);
-    
-//loop
-    if ($people_query->have_posts()) :
-
-
-    while ($people_query->have_posts()) : $people_query->the_post();
-    
-    // pull meta for each post
-        $post_id = get_the_ID();
-        $post_thumbnail_id = get_post_thumbnail_id( $post_id );
-        $post_thumbnail_url = wp_get_attachment_image_src( $post_thumbnail_id, 'medium' );
-        $post_thumbnail_url_tn = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
-        $permalink = get_permalink( $id );
-    
-    //Variables inside loop
-        $sig_id = get_post_meta( $post_id, 'people_sig' );
-        $people_quote = get_post_meta( $post_id, 'people_quote' );
-        $sig_img = wp_get_attachment_image_src( $sig_id[0], 'medium' );
-        $people_title = get_post_meta( $post_id, 'people_title' );
-    
-        $image = get_the_post_thumbnail( $post_id, 'medium' );
-            if (empty( $image )) {
-                $image = '<img src="/wp-content/themes/pkr/images/img-fpo.png">';
-            }
-    
-    //get section html
-    ob_start();
-        include(get_template_directory().'/content-people.php');
-        $output .= ob_get_contents();
-    ob_end_clean();
-    
-
-endwhile;
-    //post-loop
-$output .= '</div>'; //main-wrap
-endif;
-wp_reset_postdata(); 
-
-return $output;
+    if ( $name == 'normal' ) {
+        $output .= '<h1>'.$title.'</h1>';
+    }
+    if ( $name == 'test_method_1' ) {
+        //contents of file 'content-method-1.php' with vars
+        $output .= ''; //?
+    }
+    if ( $name == 'test_method_2' ) {
+        //contents of file 'content-method-1.php' with vars
+        $output = <<<EOD
+            include_once('./content-method-1.php');
+            EOD;
+        $output .= ''; //?
+    }
+// code
+return $output;    
 }
 
 ////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////// TT Map
-
-add_shortcode( 'tt_map', 'tt_map' ); 
-function tt_map ( $atts ) {
-
-	// Attributes
-	extract( shortcode_atts(
-		array(
-			'address' => '11184 Antioch, Overland Park, KS 66210',
-            
-		), $atts )
-	);
-    $output = '<iframe width="400" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA7FtA_cGN7ahKzvUYjAULTF_YMYRDxfrA &q='.$address.'></iframe>';
-    
-    return $output;
-}
-
-  
-  
-  
-  

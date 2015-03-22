@@ -8,28 +8,25 @@ define( 'TEMPPATH', get_stylesheet_directory_uri());
 define( 'IMAGES', TEMPPATH. "/imgages");
 
 // Plugins
-require_once ('plugins/advanced-custom-fields/acf.php');
-require_once ('plugins/acf-options-page/acf-options-page.php');
-require_once ('plugins/github-updater-2.8.1/github-updater.php'); //version 2.8.1 added 2014-10-15
-require_once ('plugins/wp_bootstrap_navwalker.php'); // used for bootstrap nav menus
+//require_once ('plugins/advanced-custom-fields/acf.php');
+//require_once ('plugins/acf-options-page/acf-options-page.php');
+//require_once ('plugins/github-updater-2.8.1/github-updater.php'); //version 2.8.1 added 2014-10-15
+//require_once ('plugins/wp_bootstrap_navwalker.php'); // used for bootstrap nav menus
 
 // Shortcodes
-require_once ('tt-shortcodes.php');
+//require_once ('tt-shortcodes.php');
+
+// Shortcodes
+require_once ('tt-customizer.php');
 
 // CPT's
-require_once ('tt-cpt.php');
+// require_once ('tt-cpt.php');
 
 // Custom fields
 // require_once ('tt-acf-fields.php');
 
 // Add theme support for featured images
 add_theme_support( 'post-thumbnails' );
-
-// Add feature image sizes
-add_image_size( square, 400, 400, true );
-
-// Add theme support for shortcodes inside widgets
-add_filter( 'widget_text', 'do_shortcode');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Add boostrap from CDN
 
@@ -70,8 +67,6 @@ if( !function_exists("tt_theme_styles") ) {
         // parent theme
         wp_register_style( 'tt-main', get_template_directory_uri() . '/tt-lib/css/tt-main.css', get_stylesheet_directory_uri() . '/style.css', '1.0', 'all' );
         wp_enqueue_style( 'tt-main' );
-        wp_register_style( 'tt-forms', get_template_directory_uri() . '/tt-lib/css/gf-formsmain-2020.css', array('tt-main'), '1.0', 'all' );
-        wp_enqueue_style( 'tt-forms' );
 
         // child themes
         // wp_register_style( 'tt-child', get_stylesheet_directory_uri() . '/tt-child.css', array(), '1.0', 'all' );
@@ -118,32 +113,3 @@ $args = array(
 register_sidebar( $args );
 
 ////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// disable admin area
-
-function tt_disable_admin_bar() { 
-	if( ! current_user_can('edit_dashboard') )
-		add_filter('show_admin_bar', '__return_false');	
-}
-//add_action( 'after_setup_theme', 'tt_disable_admin_bar' );
- 
-
-function tt_redirect_admin(){
-	if ( ! current_user_can( 'edit_dashboard' ) ){
-		wp_redirect( site_url() . '/' );
-		exit;		
-	}
-}
-//add_action( 'admin_init', 'tt_redirect_admin' );
-
-////////////////////////////////////////////////////////
-
-function tt_print_acf() {
-    
-    //$user_meta = get_user_meta(1);
-    //print_r($user_meta);
-}
-add_action('admin_print_footer_scripts', 'tt_print_acf');
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-

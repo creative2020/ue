@@ -14,7 +14,7 @@ Template Name: Home
 <div class="row">
     <div id="quicklink-wrap" class="col-sm-12">
         <div class="row">
-            <a href="#">
+            <a href="/about-us/#idbo">
                 <div class="quicklink col-sm-3 idbo" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/idbo-mark-20.svg');">
                     <div class="ql-logo">
                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logotype-idbo.svg" alt="..."> 
@@ -22,7 +22,7 @@ Template Name: Home
                     
                 </div>
             </a>
-            <a href="#">
+            <a href="/about-us/#mc">
                 <div class="quicklink col-sm-3 millcreek" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/idbo-mark-20.svg');">
                     <div class="ql-logo">
                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logotype-millcreek.svg" alt="..."> 
@@ -30,7 +30,7 @@ Template Name: Home
                     
                 </div>
             </a>
-            <a href="#">
+            <a href="/about-us/#unitedexcel">
                 <div class="quicklink col-sm-3 ue" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/idbo-mark-20.svg');">
                     <div class="ql-logo">
                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logotype-ue.svg" alt="..."> 
@@ -38,7 +38,7 @@ Template Name: Home
                     
                 </div>
             </a>
-            <a href="#">
+            <a href="/about-us/#ued">
                 <div class="quicklink col-sm-3 ued" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/idbo-mark-20.svg');">
                     <div class="ql-logo">
                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logotype-ued.svg" alt="..."> 
@@ -53,95 +53,10 @@ Template Name: Home
 
 </div>
 
-
-<div class="row">
-    
-        <div id="projects" class="col-sm-10 col-sm-offset-1">
-            <div class="col-sm-12">
-                <h1>Projects</h1>
-            </div>
-            
-            <div class="col-sm-4">
-                <a href="#">
-                    <div class="col-sm-12 project-wrap" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/project-fpo.png');">
-                        <div class="row project-desc">
-                            <h2>Project Name</h2>
-                            <p>Hello project</p>
-                        </div>
-                    </div>
-                 </a>       
-
-            </div>
-            
-            <div class="col-sm-4">
-                <a href="#">
-                    <div class="col-sm-12 project-wrap" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/project-fpo.png');">
-                        <div class="row project-desc">
-                            <h2>Project Name</h2>
-                            <p>Hello project</p>
-                        </div>
-                    </div>
-                 </a>       
-
-            </div>
-            
-            <div class="col-sm-4">
-                <a href="#">
-                    <div class="col-sm-12 project-wrap" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/project-fpo.png');">
-                        <div class="row project-desc">
-                            <h2>Project Name</h2>
-                            <p>Hello project</p>
-                        </div>
-                    </div>
-                 </a>       
-
-            </div>
-            
-            <div class="col-sm-4">
-                <a href="#">
-                    <div class="col-sm-12 project-wrap" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/project-fpo.png');">
-                        <div class="row project-desc">
-                            <h2>Project Name</h2>
-                            <p>Hello project</p>
-                        </div>
-                    </div>
-                 </a>       
-
-            </div>
-            
-            <div class="col-sm-4">
-                <a href="#">
-                    <div class="col-sm-12 project-wrap" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/project-fpo.png');">
-                        <div class="row project-desc">
-                            <h2>Project Name</h2>
-                            <p>Hello project</p>
-                        </div>
-                    </div>
-                 </a>       
-
-            </div>
-            
-            <div class="col-sm-4">
-                <a href="#">
-                    <div class="col-sm-12 project-wrap" style="background-image:url('<?php echo get_stylesheet_directory_uri(); ?>/images/project-fpo.png');">
-                        <div class="row project-desc">
-                            <h2>Project Name</h2>
-                            <p>Hello project</p>
-                        </div>
-                    </div>
-                 </a>       
-
-            </div>
-            
-        </div>          
-   
-        
-</div><!--row-->
+<!-- Projects -->
+    <?php get_template_part( 'section','projects' ); ?>
+<!-- Projects -->
 
 
 
-
-
-
-
-  <?php get_footer() ?>
+<?php get_footer() ?>
