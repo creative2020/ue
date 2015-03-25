@@ -162,30 +162,24 @@ if ( $the_query->have_posts() ) {
          
 		
 //HTML
+            
+    if ($cat_name == 'company' ) {
         
-    $output .= '<a href="'.$permalink.'"><div class="list-wrap"><div class="list-img col-xs-12 col-sm-4">';  
-    $output .= $image .
-                '</div>'.
-                '<div class="row col-xs-12 col-sm-8">'. 
-                    '<h2>'. $post->post_title .'</h2>'.
-                    '<p>'. $post->excerpt .'</p>'.
-                '</div></div>'.
-                '</a>'.
-                '<div class="clearfix"></div>';
+    //default Output HTML
+                // image
+        echo get_template_part( 'content', 'company' );
 
-
-	}
 } else {
-	// no posts found
-	echo '<h2>No ' . $type . ' found</h2>';
+    //nothing
 }
     // after loop
     //$output .= '</ul>';
     
 /* Restore original Post Data */
 wp_reset_postdata();
-return $output;
-}
+//return $output;
+}}}
+
 
 ////////////////////////////////////////////////////////
 

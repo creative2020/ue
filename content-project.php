@@ -77,7 +77,7 @@
 
 <!-- home page project section -->
 
-<div class="col-sm-4">
+<div class="col-sm-4 col-lg-3">
                 <a href="#project-modal" data-toggle="modal" data-target="#project-modal">
                     <div class="col-sm-12 project-wrap" style="background-image:url('<?php echo $image_info[0]; ?>');">
                         <div class="row project-desc">

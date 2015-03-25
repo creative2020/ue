@@ -101,7 +101,8 @@ ul {
 }
 [class^="btn-"]:hover,
 [class*="btn-"]:hover{
-    background-color: #A22A2E;    
+    color:white !important;
+    background-color: #A22A2E !important;    
 }
 [class^="btn-"],
 [class*="btn-"]{
@@ -110,9 +111,37 @@ ul {
     border:0px !important;
 }
 .btn-primary {
-  background-color: #412020;
+    background-color: #412020;
 }
-
+.btn-grey {
+    color:#411f1e;
+    background-color: #cccccc !important;
+}
+/*image button*/
+.img-btn:hover {
+opacity:0.2;
+}
+.img-btn-wrap {
+color:white !important;
+font-size:3.0em;
+float:left;
+}
+.img-btn-wrap i{
+width:100%;
+position:absolute;
+color:white;
+top:25%;
+font-size:3.0em;
+text-align:center;
+padding-right:30px;
+display:none;
+}
+.img-btn-wrap:hover i{
+display:block;
+}
+.img-btn {
+float:left;
+}
 /*Page*/
 #page {
     background-color:white;
@@ -156,7 +185,7 @@ i.skynav:hover {
     height:55px;
 }
 #top .logo img{
-    width:100%;
+    max-width:200px;
 }
 
 #top .logo a {
@@ -202,7 +231,7 @@ i.skynav:hover {
     display: block;
     width: 22px;
     height: 2px;
-    border-radius: 1px;
+    border-radius: 0px;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #411f1e;
@@ -220,8 +249,9 @@ i.skynav:hover {
     border-radius: 4px;
 }
 .nav > li > a {
-    color:#411f1e;
+    color:gray;
     text-decoration:none;
+    margin-left:0px;    
 }
 
 .nav > li > a:hover {
@@ -230,12 +260,18 @@ i.skynav:hover {
 }
 
 .nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+    color:white;
     background-color: #411f1e;
     border-color: transparent;
 }
 .dropdown-menu li a {
-    color:#E98300;
+    color:white;
     text-decoration:none;
+    padding:1.0em;
+    margin-left:0px;
+    border:0px;
+    border-top:1px solid white !important;
+
 }
 .dropdown-menu {
     position: absolute;
@@ -245,24 +281,30 @@ i.skynav:hover {
     display: none;
     float: left;
     min-width: 160px;
-    padding: 5px 0;
-    margin: 2px 0 0;
+    padding: 0px 0;
+    margin: 0px 0;
     font-size: 14px;
     text-align: left;
     list-style: none;
-    background-color: #e98300;
+    background-color: gray;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    border: 0px solid #ccc;
-    border: 0px solid rgba(0,0,0,.15);
+    border: 0px solid #ccc !important;
     border-radius: 0px;
     -webkit-box-shadow: 0 0px 0px rgba(0,0,0,.175);
     box-shadow: 0 0px 0px rgba(0,0,0,.175);
 }
+.dropdown-menu>li>a:visited {
+    background: gray;
+}
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
     color: white;
     text-decoration: none;
-    background-color: #E98300;
+    background-color: #A22A2E !important;
+}
+ul.dropdown-menu {
+    background: gray;
+    border-top:1px solid white !important;
 }
 
 /*Callout*/
@@ -281,12 +323,15 @@ h3.callout-message {
 .carousel-inner .item img {
     width:100%
 }
+.carousel-caption {
+    text-align:center !important;
+}
 .carousel-caption h4 {
     color:white;
-    font-size: 2.2em;
+    font-size: 3.5em;
 }
 .carousel-caption p{
-    font-size:1.2em;
+    font-size:1.5em;
     font-weight: 200;
 }
 .carousel-caption {
@@ -298,6 +343,7 @@ h3.callout-message {
     padding:0.5em 7.0em;
     opacity: 0.6;
     width:100%;
+    margin-bottom:3.0em;
 }
 .carousel-indicators {
     left: 90%;
@@ -398,7 +444,10 @@ h3.callout-message {
     top:-146px;
     
 }
-
+/*Posts, search*/
+.tt-search h2 {
+  margin-top:0px;
+}
 /*Projects*/
 #project-modal .modal-dialog {
     width:80%;
@@ -531,6 +580,19 @@ a.side-icon {
     width:100%;
     align-self:center;
 }
+/*Career*/
+i.career-quote{
+margin-top:0.3em;
+color:#cccccc;
+font-size:2.5em;
+}
+.career-quote h3 {
+padding-left:1.0em;
+border-left:6px solid #cccccc;
+}
+.career-quote h3:before {
+content:"";
+}
 /*Footer*/
 #footer-wrap {
     color:#411f1e;
@@ -600,8 +662,32 @@ min-height:250px;
 max-height:250px;
 overflow:hidden;
 }
+/* med ------------------------START------------------- */
 
+@media only screen 
+and (max-width : 1200px) and (min-width : 993px) {
 
+#navbar {
+  background-color: #e3e5e5;
+  color: #411f1e;
+  padding-left: 25%;
+}
+
+} /* @media -------------END-----------------*/ 
+
+/* small ------------------------START------------------- */
+
+@media only screen 
+and (max-width : 992px) and (min-width : 769px) {
+
+#navbar {
+  background-color: #e3e5e5;
+  color: #411f1e;
+  padding-left: 30%;
+}
+
+} /* @media -------------END-----------------*/    
+    
 /* mobile ------------------------START------------------- */
 
 @media only screen 

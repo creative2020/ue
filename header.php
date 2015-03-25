@@ -4,6 +4,7 @@
 <title>
 <?php wp_title(); ?>
 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen,projection" />
 <?php wp_head(); ?>
@@ -31,11 +32,11 @@
         </div>
     </div>
     <div id="top" class="col-xs-12 col-sm-10 col-sm-offset-1">
-        <div class="logo col-xs-4 col-xs-offset-4 col-sm-2 col-sm-offset-0">
+        <div class="logo col-xs-offset-4 col-xs-4 col-sm-offset-0 col-sm-3 col-md-offset-0 col-md-2 col-lg-offset-0 col-lg-2">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/ue-mark.svg" class="img-responsize">
             <a href="<?php echo get_option('home'); ?>" title="<?php bloginfo('name'); ?>"></a>
         </div>
-        <div class="col-xs-8 col-xs-offset-2 col-sm-10">
+        <div class="col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-7 col-md-offset-0 col-sm-7 col-lg-offset-0 col-lg-7">
             <div class="tagline">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/tagline.svg" class="img-responsize">
             </div>
